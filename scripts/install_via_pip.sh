@@ -42,10 +42,6 @@ pip cache purge
 # upgrade pip
 pip install --upgrade pip --progress-bar off
 
-# install captum with dev deps
-pip install -e .[dev] --progress-bar off
-BUILD_INSIGHTS=1 python setup.py develop
-
 # install pytorch nightly if asked for
 if [[ $PYTORCH_NIGHTLY == true ]]; then
   pip install --upgrade --pre torch -f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html --progress-bar off
@@ -70,3 +66,7 @@ if [[ $CHOSEN_TRANSFORMERS_VERSION == -1 ]]; then
 else
   pip install transformers=="$CHOSEN_TRANSFORMERS_VERSION" --progress-bar off
 fi
+
+# install captum with dev deps
+pip install -e .[dev] --progress-bar off
+BUILD_INSIGHTS=1 python setup.py develop
